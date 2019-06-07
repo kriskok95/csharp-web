@@ -5,6 +5,7 @@ using IRunes.Models;
 using IRunes.Services;
 using SIS.MvcFramework;
 using SIS.MvcFramework.Attributes;
+using SIS.MvcFramework.Attributes.Http;
 using SIS.MvcFramework.Attributes.Security;
 using SIS.MvcFramework.Mapping;
 using SIS.MvcFramework.Result;

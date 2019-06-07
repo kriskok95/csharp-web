@@ -3,6 +3,7 @@ using SIS.MvcFramework;
 using SIS.MvcFramework.Attributes;
 using SIS.MvcFramework.Result;
 using System.Collections.Generic;
+using SIS.MvcFramework.Attributes.Http;
 
 namespace IRunes.App.Controllers
 {

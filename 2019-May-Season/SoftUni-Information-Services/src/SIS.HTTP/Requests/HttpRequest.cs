@@ -6,7 +6,6 @@ using System.Web;
 using SIS.Common;
 using SIS.HTTP.Common;
 using SIS.HTTP.Cookies;
-using SIS.HTTP.Cookies.Contracts;
 using SIS.HTTP.Enums;
 using SIS.HTTP.Exceptions;
 using SIS.HTTP.Headers;

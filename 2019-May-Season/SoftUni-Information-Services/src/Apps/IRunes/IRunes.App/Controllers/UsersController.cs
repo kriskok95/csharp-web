@@ -5,6 +5,7 @@ using IRunes.Services;
 using SIS.MvcFramework;
 using SIS.MvcFramework.Attributes;
 using SIS.MvcFramework.Attributes.Action;
+using SIS.MvcFramework.Attributes.Http;
 using SIS.MvcFramework.Result;
 
 namespace IRunes.App.Controllers

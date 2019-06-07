@@ -1,6 +1,6 @@
 ﻿using SIS.HTTP.Enums;
 
-namespace SIS.MvcFramework.Attributes
+namespace SIS.MvcFramework.Attributes.Http
 {
     public class HttpGetAttribute : BaseHttpAttribute
     {

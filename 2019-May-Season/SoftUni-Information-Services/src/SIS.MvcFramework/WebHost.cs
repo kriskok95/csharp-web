@@ -8,6 +8,7 @@ using SIS.HTTP.Requests;
 using SIS.HTTP.Responses;
 using SIS.MvcFramework.Attributes;
 using SIS.MvcFramework.Attributes.Action;
+using SIS.MvcFramework.Attributes.Http;
 using SIS.MvcFramework.Attributes.Security;
 using SIS.MvcFramework.DependencyContainer;
 using SIS.MvcFramework.Logging;

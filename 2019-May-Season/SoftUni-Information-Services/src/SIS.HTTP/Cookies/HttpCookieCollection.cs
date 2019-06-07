@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using SIS.Common;
 using SIS.HTTP.Common;
-using SIS.HTTP.Cookies.Contracts;
 
 namespace SIS.HTTP.Cookies
 {
