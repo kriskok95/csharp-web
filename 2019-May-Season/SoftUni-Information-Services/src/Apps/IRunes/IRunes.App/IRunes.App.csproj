@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="microsoft.entityframeworkcore" Version="2.2.4" />
+    <PackageReference Include="microsoft.entityframeworkcore.design" Version="2.2.4" />
+    <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="2.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\SIS.MvcFramework\SIS.MvcFramework.csproj" />
     <ProjectReference Include="..\IRunes.Models\IRunes.Models.csproj" />
     <ProjectReference Include="..\IRunes.Services\IRunes.Services.csproj" />
