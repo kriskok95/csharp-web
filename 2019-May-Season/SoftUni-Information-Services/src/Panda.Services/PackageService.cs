@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Panda.Data;
 using Panda.Models;
+using Panda.Models.Enums;
 
 namespace Panda.Services
 {
@@ -32,6 +34,14 @@ namespace Panda.Services
         {
             context.Packages.Add(package);
             context.SaveChanges();
+        }
+
+        public ICollection<Package> GetPendingPackages()
+        {
+            return context.Packages
+                .Include(x => x.Recipient)
+                .Where(x => x.Status == Status.Pending)
+                .ToList();
         }
     }
 }

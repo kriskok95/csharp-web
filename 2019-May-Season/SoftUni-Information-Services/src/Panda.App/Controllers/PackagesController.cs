@@ -4,6 +4,7 @@ using Panda.Models;
 using Panda.Models.Enums;
 using Panda.Services;
 using SIS.MvcFramework.Attributes.Http;
+using SIS.MvcFramework.Mapping;
 using SIS.MvcFramework.Result;
 
 namespace Panda.App.Controllers
@@ -41,6 +42,26 @@ namespace Panda.App.Controllers
 
             //TODO: Maybe redirect to different page
             return this.Redirect("/");
+        }
+
+        public IActionResult Pending()
+        {
+            var packages = packageService
+                .GetPendingPackages()
+                .ToList();
+
+            var packagesViewModel = packages
+                .Select(x => new ShowPendingPackagesViewModel()
+                {
+                    Id = x.Id,
+                    Description = x.Description,
+                    ShippingAddress = x.ShippingAddress,
+                    Weight = x.Weight,
+                    RecipientName = x.Recipient.Username
+                })
+                .ToList();
+
+            return this.View(packagesViewModel);
         }
     }
 }
