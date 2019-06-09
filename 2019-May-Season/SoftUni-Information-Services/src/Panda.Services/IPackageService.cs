@@ -10,5 +10,6 @@ namespace Panda.Services
         void AddPackage(Package package);
         ICollection<Package> GetPendingPackages();
         ICollection<Package> GetDeliveredPackages();
+        void DeliverItem(string id);
     }
 }

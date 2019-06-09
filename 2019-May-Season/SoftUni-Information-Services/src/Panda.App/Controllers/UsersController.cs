@@ -6,6 +6,7 @@ using Panda.Services;
 using SIS.MvcFramework;
 using SIS.MvcFramework.Attributes.Action;
 using SIS.MvcFramework.Attributes.Http;
+using SIS.MvcFramework.Attributes.Security;
 using SIS.MvcFramework.Mapping;
 using SIS.MvcFramework.Result;
 
@@ -70,6 +71,7 @@ namespace Panda.App.Controllers
             return this.Redirect("/Users/Login");
         }
 
+        [Authorize]
         public IActionResult Logout()
         {
             this.SignOut();

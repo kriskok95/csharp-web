@@ -4,6 +4,7 @@ using Panda.Models;
 using Panda.Models.Enums;
 using Panda.Services;
 using SIS.MvcFramework.Attributes.Http;
+using SIS.MvcFramework.Attributes.Security;
 using SIS.MvcFramework.Mapping;
 using SIS.MvcFramework.Result;
 
@@ -18,6 +19,7 @@ namespace Panda.App.Controllers
             this.packageService = packageService;
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             var recipients = packageService.GetRecipients()
@@ -27,6 +29,7 @@ namespace Panda.App.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(CreatePackageViewModel packageViewModel)
         {
             var package = new Package
@@ -44,6 +47,7 @@ namespace Panda.App.Controllers
             return this.Redirect("/");
         }
 
+        [Authorize]
         public IActionResult Pending()
         {
             var packages = packageService
@@ -64,6 +68,7 @@ namespace Panda.App.Controllers
             return this.View(packagesViewModel);
         }
 
+        [Authorize]
         public IActionResult Delivered()
         {
             var packages = packageService
@@ -82,6 +87,14 @@ namespace Panda.App.Controllers
                 .ToList();
 
             return this.View(packagesViewModel);
+        }
+
+        [Authorize]
+        public IActionResult Deliver(string id)
+        {
+            packageService.DeliverItem(id);
+            
+            return this.Redirect("/");
         }
     }
 }

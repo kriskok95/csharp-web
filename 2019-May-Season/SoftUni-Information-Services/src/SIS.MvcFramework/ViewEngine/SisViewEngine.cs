@@ -33,7 +33,7 @@ namespace SIS.MvcFramework.ViewEngine
             string csharpHtmlCode = string.Empty;
             csharpHtmlCode = this.CheckForWidgets(viewContent);
             csharpHtmlCode = this.GetCSharpCode(csharpHtmlCode);
-            string code = $@"
+             string code = $@"
 using System;
 using System.Net;
 using System.Linq;

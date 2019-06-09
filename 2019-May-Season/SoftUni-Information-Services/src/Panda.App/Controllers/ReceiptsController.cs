@@ -3,6 +3,7 @@ using System.Linq;
 using Panda.App.ViewModels.Receipts;
 using Panda.Models;
 using Panda.Services;
+using SIS.MvcFramework.Attributes.Security;
 using SIS.MvcFramework.Mapping;
 
 namespace Panda.App.Controllers
@@ -19,13 +20,21 @@ namespace Panda.App.Controllers
             this.receiptService = receiptService;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             List<Receipt> receiptsByUser = this.receiptService.GetReceiptsByUsername(this.User.Username);
 
             var receipts = receiptsByUser
-                .Select(x => ModelMapper.ProjectTo<ListReceiptsViewModel>(x))
+                .Select(x => new ListReceiptsViewModel
+                {
+                    Id = x.Id,
+                    Fee = x.Fee,
+                    IssuedOn = x.IssuedOn,
+                    Recipient = x.Recipient.Username
+                })
                 .ToList();
+                
 
             return this.View(receipts);
         }

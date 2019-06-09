@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using Panda.Data;
 using Panda.Models;
 using Panda.Models.Enums;
@@ -50,6 +52,23 @@ namespace Panda.Services
                 .Include(x => x.Recipient)
                 .Where(x => x.Status == Status.Delivered)
                 .ToList();
+        }
+
+        public void DeliverItem(string id)
+        {
+            Package package = context.Packages.SingleOrDefault(x => x.Id == id);
+
+            if (package != null)
+            {
+                package.Status = Status.Delivered;
+                package.Receipt = new Receipt()
+                {
+                    RecipientId = package.RecipientId,
+                    Fee = (decimal)(package.Weight * 2.67),
+                    IssuedOn = DateTime.UtcNow
+                };
+                context.SaveChanges();
+            }
         }
     }
 }

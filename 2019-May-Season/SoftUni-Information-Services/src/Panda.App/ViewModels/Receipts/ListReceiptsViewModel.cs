@@ -12,7 +12,7 @@ namespace Panda.App.ViewModels.Receipts
         public DateTime IssuedOn { get; set; }
 
         //TODO: Try without ID
-        public string RecipientId { get; set; }
-        public User Recipient { get; set; }
+        //public string RecipientId { get; set; }
+        public string Recipient { get; set; }
     }
 }
