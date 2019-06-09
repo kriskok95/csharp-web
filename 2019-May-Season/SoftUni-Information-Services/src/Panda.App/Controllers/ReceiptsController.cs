@@ -4,7 +4,6 @@ using Panda.App.ViewModels.Receipts;
 using Panda.Models;
 using Panda.Services;
 using SIS.MvcFramework.Attributes.Security;
-using SIS.MvcFramework.Mapping;
 
 namespace Panda.App.Controllers
 {
@@ -34,7 +33,6 @@ namespace Panda.App.Controllers
                     Recipient = x.Recipient.Username
                 })
                 .ToList();
-                
 
             return this.View(receipts);
         }

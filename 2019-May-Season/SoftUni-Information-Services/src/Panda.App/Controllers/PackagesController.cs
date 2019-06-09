@@ -32,6 +32,11 @@ namespace Panda.App.Controllers
         [Authorize]
         public IActionResult Create(CreatePackageViewModel packageViewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return this.Redirect("/Packages/Create");
+            }
+
             var package = new Package
             {
                 Description = packageViewModel.Description,

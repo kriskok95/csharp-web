@@ -29,6 +29,11 @@ namespace Panda.App.Controllers
         [HttpPost]
         public IActionResult Login(LoginUserInputModel inputModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return this.Redirect("/Users/Login");
+            }
+
             User user = userService.GetUserByUsernameAndPassword(inputModel.Username, this.HashPassword(inputModel.Password));
 
             if (user == null)
