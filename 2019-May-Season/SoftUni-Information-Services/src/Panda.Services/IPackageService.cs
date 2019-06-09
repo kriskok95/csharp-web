@@ -9,5 +9,6 @@ namespace Panda.Services
         User GetRecipient(string packageViewModel);
         void AddPackage(Package package);
         ICollection<Package> GetPendingPackages();
+        ICollection<Package> GetDeliveredPackages();
     }
 }

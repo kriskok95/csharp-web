@@ -51,7 +51,27 @@ namespace Panda.App.Controllers
                 .ToList();
 
             var packagesViewModel = packages
-                .Select(x => new ShowPendingPackagesViewModel()
+                .Select(x => new ShowPackagesViewModel()
+                {
+                    Id = x.Id,
+                    Description = x.Description,
+                    ShippingAddress = x.ShippingAddress,
+                    Weight = x.Weight,
+                    RecipientName = x.Recipient.Username
+                })
+                .ToList();
+
+            return this.View(packagesViewModel);
+        }
+
+        public IActionResult Delivered()
+        {
+            var packages = packageService
+                .GetDeliveredPackages()
+                .ToList();
+
+            var packagesViewModel = packages
+                .Select(x => new ShowPackagesViewModel()
                 {
                     Id = x.Id,
                     Description = x.Description,

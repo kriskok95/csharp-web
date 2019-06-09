@@ -43,5 +43,13 @@ namespace Panda.Services
                 .Where(x => x.Status == Status.Pending)
                 .ToList();
         }
+
+        public ICollection<Package> GetDeliveredPackages()
+        {
+            return context.Packages
+                .Include(x => x.Recipient)
+                .Where(x => x.Status == Status.Delivered)
+                .ToList();
+        }
     }
 }
