@@ -1,11 +1,10 @@
-﻿using Panda.Data;
-using Panda.Services;
-using SIS.MvcFramework;
-using SIS.MvcFramework.DependencyContainer;
-using SIS.MvcFramework.Routing;
-
-namespace Panda.App
+﻿namespace Panda.App
 {
+    using Data;
+    using Services;
+    using SIS.MvcFramework;
+    using SIS.MvcFramework.DependencyContainer;
+    using SIS.MvcFramework.Routing;
     public class Startup : IMvcApplication
     {
         public void Configure(IServerRoutingTable serverRoutingTable)

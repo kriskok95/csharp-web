@@ -1,7 +1,6 @@
-﻿using SIS.MvcFramework.Attributes.Validation;
-
-namespace Panda.App.ViewModels.Users
+﻿namespace Panda.App.ViewModels.Users
 {
+    using SIS.MvcFramework.Attributes.Validation;
     public class LoginUserInputModel
     {
         private const string ErrorMessage = "Invalid username or password!";

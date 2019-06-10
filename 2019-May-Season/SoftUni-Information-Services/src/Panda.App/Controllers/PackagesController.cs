@@ -1,16 +1,16 @@
-﻿using System.Linq;
-using Panda.App.ViewModels.Packages;
-using Panda.Models;
-using Panda.Models.Enums;
-using Panda.Services;
-using SIS.MvcFramework.Attributes.Http;
-using SIS.MvcFramework.Attributes.Security;
-using SIS.MvcFramework.Mapping;
-using SIS.MvcFramework.Result;
-
-namespace Panda.App.Controllers
+﻿namespace Panda.App.Controllers
 {
-    public class PackagesController : BaseController
+    using System.Linq;
+    using ViewModels.Packages;
+    using Models;
+    using Models.Enums;
+    using Services;
+    using SIS.MvcFramework;
+    using SIS.MvcFramework.Attributes.Http;
+    using SIS.MvcFramework.Attributes.Security;
+    using SIS.MvcFramework.Result;
+
+    public class PackagesController : Controller
     {
         private readonly IPackageService packageService;
 

@@ -1,8 +1,7 @@
-﻿using System;
-using Panda.Models;
-
-namespace Panda.App.ViewModels.Receipts
+﻿namespace Panda.App.ViewModels.Receipts
 {
+    using System;
+
     public class ListReceiptsViewModel
     {
         public string Id { get; set; }
@@ -11,8 +10,6 @@ namespace Panda.App.ViewModels.Receipts
 
         public DateTime IssuedOn { get; set; }
 
-        //TODO: Try without ID
-        //public string RecipientId { get; set; }
         public string Recipient { get; set; }
     }
 }

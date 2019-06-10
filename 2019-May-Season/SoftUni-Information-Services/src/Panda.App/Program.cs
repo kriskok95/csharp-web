@@ -1,7 +1,7 @@
-﻿using SIS.MvcFramework;
-
-namespace Panda.App
+﻿namespace Panda.App
 {
+    using SIS.MvcFramework;
+
     public static class Program
     {
         public static void Main()

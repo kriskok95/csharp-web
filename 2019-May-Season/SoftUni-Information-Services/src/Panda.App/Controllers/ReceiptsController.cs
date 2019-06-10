@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Panda.App.ViewModels.Receipts;
-using Panda.Models;
-using Panda.Services;
-using SIS.MvcFramework.Attributes.Security;
-
-namespace Panda.App.Controllers
+﻿namespace Panda.App.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using ViewModels.Receipts;
+    using Models;
+    using Services;
+    using SIS.MvcFramework.Attributes.Security;
     using SIS.MvcFramework;
     using SIS.MvcFramework.Result;
 

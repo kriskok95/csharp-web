@@ -1,7 +1,7 @@
-﻿using SIS.MvcFramework.Attributes.Validation;
-
-namespace Panda.App.ViewModels.Users
+﻿namespace Panda.App.ViewModels.Users
 {
+    using SIS.MvcFramework.Attributes.Validation;
+
     public class UserRegisterInputModel
     {
         private const string InvalidUsernameLengthMessage = "Username must be between 5 and 20 symbols!";
