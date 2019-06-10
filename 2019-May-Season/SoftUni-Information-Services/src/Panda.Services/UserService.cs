@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using Panda.Data;
-using Panda.Models;
-
-namespace Panda.Services
+﻿namespace Panda.Services
 {
+    using System.Linq;
+    using Data;
+    using Models;
     public class UserService : IUserService
     {
         private readonly PandaDbContext dbContext;

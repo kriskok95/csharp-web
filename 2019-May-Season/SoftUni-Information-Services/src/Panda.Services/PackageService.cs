@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
-using Panda.Data;
-using Panda.Models;
-using Panda.Models.Enums;
-
-namespace Panda.Services
+﻿namespace Panda.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.EntityFrameworkCore;
+    using Data;
+    using Models;
+    using Models.Enums;
+
     public class PackageService : IPackageService
     {
         private readonly PandaDbContext context;

@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Microsoft.EntityFrameworkCore;
-using Panda.Data;
-using Panda.Models;
-
-namespace Panda.Services
+﻿namespace Panda.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.EntityFrameworkCore;
+    using Data;
+    using Models;
+
     public class ReceiptService : IReceiptService
     {
         private readonly PandaDbContext context;
@@ -23,12 +22,7 @@ namespace Panda.Services
                 .Include(x => x.Receipts)
                 .SingleOrDefault(x => x.Username == username);
 
-            if (user == null)
-            {
-                return null;
-            }
-
-            return user.Receipts
+            return user?.Receipts
                 .ToList();
         }
     }

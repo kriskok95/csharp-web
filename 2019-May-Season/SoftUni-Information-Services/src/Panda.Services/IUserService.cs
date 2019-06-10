@@ -1,8 +1,7 @@
-﻿
-using Panda.Models;
-
-namespace Panda.Services
+﻿namespace Panda.Services
 {
+    using Models;
+
     public interface IUserService
     {
         void CreateUser(User user);
