@@ -1,19 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using IRunes.App.ViewModels;
-using IRunes.App.ViewModels.Tracks;
-using IRunes.Models;
-using IRunes.Services;
-using Microsoft.Extensions.Logging;
-using SIS.MvcFramework;
-using SIS.MvcFramework.Attributes;
-using SIS.MvcFramework.Attributes.Http;
-using SIS.MvcFramework.Attributes.Security;
-using SIS.MvcFramework.Mapping;
-using SIS.MvcFramework.Result;
-
-namespace IRunes.App.Controllers
+﻿namespace IRunes.App.Controllers
 {
+    using ViewModels.Tracks;
+    using Models;
+    using Services;
+    using SIS.MvcFramework;
+    using SIS.MvcFramework.Attributes.Http;
+    using SIS.MvcFramework.Attributes.Security;
+    using SIS.MvcFramework.Mapping;
+    using SIS.MvcFramework.Result;
+
     public class TracksController : Controller
     {
         private readonly ITrackService trackService;

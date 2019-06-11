@@ -1,12 +1,10 @@
-﻿using IRunes.App.ViewModels;
-using SIS.MvcFramework;
-using SIS.MvcFramework.Attributes;
-using SIS.MvcFramework.Result;
-using System.Collections.Generic;
-using SIS.MvcFramework.Attributes.Http;
-
-namespace IRunes.App.Controllers
+﻿namespace IRunes.App.Controllers
 {
+    using SIS.MvcFramework;
+    using SIS.MvcFramework.Result;
+    using System.Collections.Generic;
+    using SIS.MvcFramework.Attributes.Http;
+
     public class HomeController : Controller
     {
         [HttpGet(Url = "/")]
