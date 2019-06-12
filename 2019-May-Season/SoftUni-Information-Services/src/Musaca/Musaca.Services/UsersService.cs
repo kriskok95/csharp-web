@@ -23,6 +23,13 @@ namespace Musaca.Services
             return user;
         }
 
+        public User GetUserById(string userId)
+        {
+            User user = context.Users.Find(userId);
+
+            return user;
+        }
+
         public string RegisterUser(string username, string password, string email)
         {
             User user = new User

@@ -1,4 +1,5 @@
-﻿using Musaca.Models;
+﻿using System.Collections.Generic;
+using Musaca.Models;
 
 namespace Musaca.Services
 {
@@ -7,5 +8,7 @@ namespace Musaca.Services
         Order CreateOrder(Order order);
         Order GetCurrentOrder(string username);
         void AddProductToOrder(Order activeOrderId, string productId);
+        void CashOut(string userId);
+        List<Order> GetAllOrders(string userUsername);
     }
 }

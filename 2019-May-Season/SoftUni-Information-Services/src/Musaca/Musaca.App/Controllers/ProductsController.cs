@@ -67,12 +67,6 @@ namespace Musaca.App.Controllers
 
             var activeOrder = this.ordersService.GetCurrentOrder(this.User.Username);
             this.ordersService.AddProductToOrder(activeOrder, product.Id);
-            //activeOrder.OrderProducts.Add(new OrderProducts()
-            //{
-            //    OrderId = activeOrder.Id,
-            //    ProductId = product.Id
-            //});
-            
 
             return this.Redirect("/");
         }

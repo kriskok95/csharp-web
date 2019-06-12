@@ -1,4 +1,6 @@
-﻿using Musaca.Data;
+﻿using System;
+using System.Collections.Generic;
+using Musaca.Data;
 using Musaca.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -9,10 +11,12 @@ namespace Musaca.Services
     public class OrderService : IOrdersService
     {
         private readonly MusacaDbContext context;
+        private readonly IUsersService usersService;
 
-        public OrderService(MusacaDbContext context)
+        public OrderService(MusacaDbContext context, IUsersService usersService)
         {
             this.context = context;
+            this.usersService = usersService;
         }
 
         public Order CreateOrder(Order order)
@@ -43,6 +47,36 @@ namespace Musaca.Services
             });
 
             this.context.SaveChanges();
+        }
+
+        public void CashOut(string userId)
+        {
+            User user = this.usersService.GetUserById(userId);
+            Order currentOrder = GetCurrentOrder(user.Username);
+
+            currentOrder.Status = OrderStatus.Completed;
+            
+            Order newCurrentOrder = new Order()
+            {
+                Cashier = user,
+                Status = OrderStatus.Active,
+                IssuedOn = DateTime.UtcNow
+            };
+            this.context.Add(newCurrentOrder);
+            this.context.SaveChanges();
+        }
+
+        public List<Order> GetAllOrders(string cashierUsername)
+        {
+            var orders = this.context
+                .Orders
+                .Include(x => x.Cashier)
+                .Include(x => x.OrderProducts)
+                .ThenInclude(x => x.Product)
+                .Where(x => x.Cashier.Username == cashierUsername && x.Status == OrderStatus.Completed)
+                .ToList();
+
+            return orders;
         }
     }
 }

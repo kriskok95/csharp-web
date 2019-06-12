@@ -49,10 +49,13 @@
     <hr class="hr-2 bg-musaca">
     <div class="finish-order-holder d-flex justify-content-between">
         <div class="form-holder w-25">
-            <a class="btn bg-musaca text-white font-weight-bold px-5 py-2">Cashout</a>
+            <a class="btn bg-musaca text-white font-weight-bold px-5 py-2" href="/Orders/Cashout">Cashout</a>
         </div>
         <div class="price-holder w-25">
-            <h2 class="text-right">Total: $</h2>
+            @{
+               var totalPrice = Model.Sum(x => x.Price);
+            }
+            <h2 class="text-right">Total:@totalPrice $</h2>
         </div>
     </div>
 </main>

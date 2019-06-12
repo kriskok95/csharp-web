@@ -1,4 +1,9 @@
-﻿namespace Musaca.App.Controllers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Musaca.App.ViewModels.Orders;
+
+namespace Musaca.App.Controllers
 {
     using Musaca.App.ViewModels.Users;
     using Musaca.Models;
@@ -62,14 +67,25 @@
             }
 
             string userId = userService.RegisterUser(inputModel.Username, inputModel.Password, inputModel.Email);
-            this.orderService.CreateOrder(new Order { CashierId = userId });
+            this.orderService.CreateOrder(new Order { CashierId = userId, IssuedOn = DateTime.UtcNow});
 
             return this.Redirect("/Users/Login");
         }
 
         public IActionResult Profile()
         {
-            return this.View();
+            List<Order> allOrders = this.orderService.GetAllOrders(this.User.Username);
+
+            var allOrdersView = allOrders.Select(x => new ShowAllOrdersViewModel()
+            {
+                Id = x.Id,
+                Cashier = x.Cashier.Username,
+                IssuedOn = x.IssuedOn,
+                Total = x.OrderProducts.Sum(y => y.Product.Price)
+            })
+                .ToList();
+
+            return this.View(allOrdersView);
         }
 
         public IActionResult Logout()
