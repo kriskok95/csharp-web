@@ -1,4 +1,6 @@
-﻿namespace Musaca.App.ViewModels.Users
+﻿using System.Collections.Generic;
+
+namespace Musaca.App.ViewModels.Users
 {
     using SIS.MvcFramework.Attributes.Validation;
 
@@ -13,10 +15,11 @@
         public string Username { get; set; }
 
         [RequiredSis]
-        [PasswordSis(nameof(ConfirmPassword))]
+        [PasswordSis(PasswordErrorMessage)]
         public string Password { get; set; }
 
         [RequiredSis]
+        [PasswordSis(PasswordErrorMessage)]
         public string ConfirmPassword { get; set; }
 
         [RequiredSis]

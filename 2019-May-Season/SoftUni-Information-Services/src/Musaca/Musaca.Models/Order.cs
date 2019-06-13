@@ -1,6 +1,7 @@
 ﻿using Musaca.Models.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Musaca.Models
 {
@@ -17,6 +18,7 @@ namespace Musaca.Models
 
         public DateTime IssuedOn{ get; set; }
 
+        [Required]
         public string CashierId { get; set; }
 
         public User Cashier { get; set; }

@@ -33,7 +33,7 @@ namespace Musaca.App.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return this.Redirect("/");
+                return this.Redirect("/Users/Login");
             }
 
             User userFromDb = userService.GetUserFromDb(inputModel.Username, inputModel.Password);
