@@ -1,14 +1,13 @@
-﻿using System.Linq;
-using Musaca.Services;
-using SIS.MvcFramework.Mapping;
-
-namespace Musaca.App.Controllers
+﻿namespace Musaca.App.Controllers
 {
     using SIS.MvcFramework;
     using SIS.MvcFramework.Attributes.Http;
     using SIS.MvcFramework.Result;
     using System.Collections.Generic;
-    using Musaca.App.ViewModels.Orders;
+    using ViewModels.Orders;
+    using System.Linq;
+    using Services;
+    using SIS.MvcFramework.Mapping;
 
     public class HomeController : Controller
     {
@@ -29,16 +28,13 @@ namespace Musaca.App.Controllers
         {
             List<OrderHomeViewModel> orderHomeViewModels = new List<OrderHomeViewModel>();
 
-            //TODO: Add in service
             if (this.IsLoggedIn())
             {
                 var currentOrder = this.ordersService.GetCurrentOrder(this.User.Username);
                 var orderProducts = currentOrder.OrderProducts.Select(x => x.Product).ToList();
-
-                foreach (var product in orderProducts)
-                {
-                    orderHomeViewModels.Add(ModelMapper.ProjectTo<OrderHomeViewModel>(product));
-                }
+                orderHomeViewModels = orderProducts
+                    .Select(ModelMapper.ProjectTo<OrderHomeViewModel>)
+                    .ToList();
             }
 
             return this.View(orderHomeViewModels);
