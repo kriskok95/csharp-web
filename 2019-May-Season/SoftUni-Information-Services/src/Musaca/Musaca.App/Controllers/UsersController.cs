@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Musaca.App.ViewModels.Orders;
+using SIS.MvcFramework.Attributes.Security;
 
 namespace Musaca.App.Controllers
 {
@@ -72,6 +73,7 @@ namespace Musaca.App.Controllers
             return this.Redirect("/Users/Login");
         }
 
+        [Authorize]
         public IActionResult Profile()
         {
             List<Order> allOrders = this.orderService.GetAllOrders(this.User.Username);
@@ -88,6 +90,7 @@ namespace Musaca.App.Controllers
             return this.View(allOrdersView);
         }
 
+        [Authorize]
         public IActionResult Logout()
         {
             this.SignOut();

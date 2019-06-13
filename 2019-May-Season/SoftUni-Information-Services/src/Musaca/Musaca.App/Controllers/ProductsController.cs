@@ -1,17 +1,16 @@
-﻿using System;
-using Musaca.App.ViewModels.Products;
-using Musaca.App.ViewModels.Users;
-using Musaca.Services;
-using SIS.MvcFramework;
-using SIS.MvcFramework.Attributes.Http;
-using SIS.MvcFramework.Mapping;
-using SIS.MvcFramework.Result;
-using System.Collections.Generic;
-using System.Linq;
-using Musaca.Models;
+﻿using SIS.MvcFramework.Attributes.Security;
 
 namespace Musaca.App.Controllers
 {
+    using ViewModels.Products;
+    using ViewModels.Users;
+    using Services;
+    using SIS.MvcFramework;
+    using SIS.MvcFramework.Attributes.Http;
+    using SIS.MvcFramework.Result;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class ProductsController : Controller
     {
         private readonly IProductService productService;
@@ -23,11 +22,13 @@ namespace Musaca.App.Controllers
             this.ordersService = ordersService;
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             return this.View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Create(CreateProductInputModel inputModel)
         {
@@ -41,6 +42,7 @@ namespace Musaca.App.Controllers
             return this.All();
         }
 
+        [Authorize]
         public IActionResult All()
         {
             var products = this.productService.GetAllProducts();
@@ -55,6 +57,7 @@ namespace Musaca.App.Controllers
             return this.View(productsViewModels);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Order(OrderProductInputModel inputModel)
         {
